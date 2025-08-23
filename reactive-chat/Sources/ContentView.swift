@@ -1,10 +1,11 @@
 import SwiftUI
+import ComposableArchitecture
 
 public struct ContentView: View {
     public init() {}
 
     public var body: some View {
-        Text("Hola mundo!")
+        Text("Hello, World!")
             .padding()
     }
 }

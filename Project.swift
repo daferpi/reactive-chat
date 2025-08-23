@@ -7,7 +7,7 @@ let project = Project(
             name: "reactive-chat",
             destinations: .iOS,
             product: .app,
-            bundleId: "io.tuist.reactive-chat",
+            bundleId: "dev.tuist.reactive-chat",
             infoPlist: .extendingDefault(
                 with: [
                     "UILaunchScreen": [
@@ -16,18 +16,23 @@ let project = Project(
                     ],
                 ]
             ),
-            sources: ["reactive-chat/Sources/**"],
-            resources: ["reactive-chat/Resources/**"],
-            dependencies: []
+            buildableFolders: [
+                "reactive-chat/Sources",
+                "reactive-chat/Resources",
+            ],
+            dependencies: [
+                .external(name: "ComposableArchitecture"), 
+            ]
         ),
         .target(
             name: "reactive-chatTests",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "io.tuist.reactive-chatTests",
+            bundleId: "dev.tuist.reactive-chatTests",
             infoPlist: .default,
-            sources: ["reactive-chat/Tests/**"],
-            resources: [],
+            buildableFolders: [
+                "reactive-chat/Tests"
+            ],
             dependencies: [.target(name: "reactive-chat")]
         ),
     ]
